@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.self.mapper.LogDayMapper" >
+    <!--  开启二级缓存-->
+    <cache eviction="LRU" type="com.cache.redis.LoggingRedisCache"/>
+    <select id="queryLogDay" parameterType="com.self.po.User" resultType="com.self.po.LogDay" useCache="true">
+        SELECT * FROM logday
+        WHERE userName=#{userName}
+    </select>
+
+    <insert id="addLogDay" parameterType="com.self.po.LogDay">
+      INSERT INTO logday
+      (logDayContext,
+      userName)
+      VALUES(#{logDayContext},
+      #{userName})
+    </insert>
+
+</mapper>

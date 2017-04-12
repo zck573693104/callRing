@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friend.mapper.MessageMapper" >
+    <!--  开启二级缓存-->
+    <insert id="insertMessage" parameterType="com.friend.po.Message">
+        INSERT INTO message
+        (userName,friendName,sendDate,text,sendTimestamp)
+        VALUES
+        <if test="messageList !=null">
+            <foreach collection="messageList" item="message"  separator=",">
+                (#{message.userName},
+                #{message.friendName},
+                #{message.sendDate},
+                #{message.text},
+                #{message.sendTimestamp})
+            </foreach>
+        </if>
+    </insert>
+   <select id="selectOfflineMessage" parameterType="com.friend.po.Message" resultType="com.friend.po.Message" >
+       SELECT * from message
+       WHERE userName=#{friendName}
+       AND friendName=#{userName} AND `read`=TRUE
+   </select>
+    <update id="updateMessageBoolean" parameterType="com.friend.po.Message">
+      UPDATE message SET `read`=FALSE
+      WHERE userName=#{friendName}
+      AND friendName=#{userName}
+      AND `read`=TRUE
+    </update>
+    <delete id="deleteOfflineMessage" parameterType="com.friend.po.Message">
+        DELETE FROM message
+        WHERE userName=#{friendName}
+        AND friendName=#{userName}
+    </delete>
+    <select id="countMessageList" parameterType="com.friend.po.Message" resultType="com.friend.po.Message">
+      select *,count(text) AS `count`
+      from message
+      where friendname=#{userName}
+      AND `read`=TRUE
+      group by username
+    </select>
+</mapper>

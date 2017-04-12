@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friend.mapper.FriendMapper" >
+    <!--  开启二级缓存-->
+    <cache eviction="LRU" type="com.cache.redis.LoggingRedisCache"/>
+
+    <select id="queryOftenChatFriend" parameterType="com.self.po.User" resultType="com.friend.po.Friend" useCache="true">
+      SELECT `user`.userName AS friendName,
+      `user`.userHeadPortraitPath AS friendGraphTheoryImagePicPath
+      FROM `user`
+      WHERE
+            `user`.`userName`
+      IN
+          (SELECT friend.`friendName`
+          FROM friend
+          WHERE username=#{userName})
+    </select>
+
+    <select id="addFriend" parameterType="com.self.po.UserPo" resultType="com.self.po.User" useCache="true" >
+         SELECT * FROM `user` u
+         WHERE u.userName
+         NOT IN (#{user.userName})
+         AND u.userName
+         NOT IN (
+         SELECT friendname FROM friend f
+         WHERE f.username=#{user.userName}
+         )
+         LIMIT  #{pageNo},#{pageSize}
+
+    </select>
+
+    <insert id="becomeFriend" parameterType="com.friend.po.Friend">
+    	insert into friend
+    	(userName,
+    	friendName,
+    	friendgraphTheoryImagePicPath)
+    	values (#{userName},
+    	#{friendName},
+    	#{friendgraphTheoryImagePicPath})
+    </insert>
+
+    <select id="selectFriendLogDay" parameterType="String" resultType="com.friend.vo.SpanVo">
+        select f.friendname,
+        l.logDayContext,
+        l.logDate,
+        l.id,
+        u.userHeadPortraitPath
+        from logday l
+        left join friend f on f.friendname=l.username
+        left join user u on f.friendname=u.username
+        where f.username=#{userName}
+    </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+*.iml
+.project
+.classpath
+.iml
+.settings/
+
+target/
+bin/
+logs/
+.mule/
+overlays/
+.idea/
+.externalToolBuilders/
+.properties
+.xml
+*/**/logback-common.xml
