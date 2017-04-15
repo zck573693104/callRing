@@ -9,7 +9,10 @@ import javax.jms.TextMessage;
  * 和队列监听的代码一样。
  */
 public class TopicMessageListener implements MessageListener {
-
+  /**
+   * 被监听就是被订阅被消费
+   * @param message
+   */
   public void onMessage(Message message) {
     TextMessage tm = (TextMessage) message;
     try {

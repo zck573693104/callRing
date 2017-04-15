@@ -6,7 +6,10 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 public class TopicMessageListener2 implements MessageListener {
-
+  /**
+   * 被监听就是被订阅被消费
+   * @param message
+   */
   public void onMessage(Message message) {
     TextMessage tm = (TextMessage) message;
     try {

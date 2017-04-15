@@ -14,69 +14,62 @@ import java.util.UUID;
 
 public class UploadFileUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
+	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 
-    /**
-     * 上传文件 返回值为文件的新名字 UUID.randomUUID()+originalFilename
-     *
-     * @param multipartFile
-     * @param request
-     * @return
-     * @throws IllegalStateException
-     * @throws IOException
-     */
-    public static String uploadFile(MultipartFile multipartFile, HttpServletRequest request) throws IllegalStateException, IOException {
-        //文件的原始名称
-        String originalFilename = multipartFile.getOriginalFilename();
-        String newFileName = null;
-        if (multipartFile != null && originalFilename != null && originalFilename.length() > 0) {
+	/**
+	 * 上传文件 返回值为文件的新名字 UUID.randomUUID()+originalFilename
+	 *
+	 * @param multipartFile
+	 * @param request
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	public static String uploadFile(MultipartFile multipartFile, HttpServletRequest request) throws IOException {
+		return getFileString(multipartFile, request);
 
-            newFileName = UUID.randomUUID() + originalFilename;
-            //存储图片的物理路径
-            String pic_path = request.getSession().getServletContext().getRealPath("/upload/callRing");
-            //新图片路径
-            File targetFile = new File(pic_path, newFileName);
-            //内存数据读入磁盘
-            multipartFile.transferTo(targetFile);
+	}
 
-        }
-        return newFileName;
-    }
+	private static String getFileString(MultipartFile multipartFile, HttpServletRequest request) throws IOException {
+		String newFileName = null;
+		try { // 文件的原始名称
+			String originalFilename = multipartFile.getOriginalFilename();
 
-    /**
-     * 批量上传文件 返回值为文件的新名字 UUID.randomUUID()+originalFilename
-     *
-     * @param multipartFiles
-     * @param request
-     * @return
-     * @throws IllegalStateException
-     * @throws IOException
-     */
-    public static List<String> uploadFileList(MultipartFile multipartFiles[], HttpServletRequest request) throws IllegalStateException, IOException, CustomException {
-        List<String> newFileNames = new ArrayList<>();
-        try {
-            for (MultipartFile multipartFile : multipartFiles) {
-                //文件的原始名称
-                String originalFilename = multipartFile.getOriginalFilename();
-                String newFileName = null;
-                if (multipartFile != null && originalFilename != null && originalFilename.length() > 0) {
+			if (multipartFile != null && originalFilename != null && originalFilename.length() > 0) {
 
-                    newFileName = UUID.randomUUID() + originalFilename;
-                    //存储图片的物理路径
-                    String pic_path = request.getSession().getServletContext().getRealPath("/upload/callRing");
-                    //新图片路径
-                    File targetFile = new File(pic_path, newFileName);
-                    //内存数据读入磁盘
-                    multipartFile.transferTo(targetFile);
-                    newFileNames.add(newFileName);
-                }
+				newFileName = UUID.randomUUID() + originalFilename;
+				// 存储图片的物理路径
+				String pic_path = request.getSession().getServletContext().getRealPath("/upload/callRing");
+				// 新图片路径
+				File targetFile = new File(pic_path, newFileName);
+				// 内存数据读入磁盘
+				multipartFile.transferTo(targetFile);
+			}
 
-            }
+		} catch (Exception e) {
+			logger.error("文件上传转化错误", e.getMessage());
+		}
+		return newFileName;
+	}
 
-        } catch (IOException e) {
-            logger.debug(e.getMessage());
-            throw new CustomException(e.getMessage());
-        }
-        return newFileNames;
-    }
+	/**
+	 * 批量上传文件 返回值为文件的新名字 UUID.randomUUID()+originalFilename
+	 *
+	 * @param multipartFiles
+	 * @param request
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	public static List<String> uploadFileList(MultipartFile multipartFiles[], HttpServletRequest request)
+			throws Exception {
+		List<String> newFileNames = new ArrayList<>();
+
+		for (MultipartFile multipartFile : multipartFiles) {
+
+			newFileNames.add(getFileString(multipartFile, request));
+		}
+
+		return newFileNames;
+	}
 }
