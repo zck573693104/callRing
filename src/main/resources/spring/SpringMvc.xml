@@ -13,10 +13,12 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 		<!-- 自动扫描包注入bean -->
-	<context:component-scan base-package="com.self,com.friend">
+	<context:component-scan base-package="com.callRing">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	
+
+	<import resource="applicationContext-scheduled.xml"/>
+
 	<!-- 注解代替了注解映射器适配器 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 
@@ -53,6 +55,6 @@
 
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 
-	<bean id="logAspect" class="com.log.LogAspect"/>
-	
+	<bean id="logAspect" class="com.callRing.log.LogAspect"/>
+
     </beans>

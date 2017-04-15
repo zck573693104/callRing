@@ -23,7 +23,7 @@
     <!-- 配置别名 -->
     <typeAliases>
         <!-- 批量扫描别名 -->
-        <package name="com.self.po,com.friend.po"/>
+        <package name="com.callRing.self.po,com.callRing.friend.po"/>
     </typeAliases>
 
     <!-- 配置mapper

@@ -8,19 +8,19 @@
   <name>callRing Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+    
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-websocket</artifactId>
       <version>4.3.7.RELEASE</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.2.4</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-core</artifactId>
@@ -37,20 +37,20 @@
       <version>2.8.0</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+
     <dependency>
       <groupId>commons-pool</groupId>
       <artifactId>commons-pool</artifactId>
       <version>1.5.5</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+
     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
@@ -129,7 +129,7 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
     </dependency>
-    <dependency> <!-- Spark dependency -->
+    <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_2.10</artifactId>
       <version>1.2.0</version>
@@ -144,7 +144,16 @@
       <artifactId>aspectjrt</artifactId>
       <version>1.7.4</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-all</artifactId>
+      <version>5.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+      <version>4.3.2.RELEASE</version>
+    </dependency>
 
 
   </dependencies>

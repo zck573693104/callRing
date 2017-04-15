@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.callRing.self.mapper.IntroduceMapper" >
+    <!--  开启二级缓存-->
+    <cache eviction="LRU" type="com.callRing.redis.LoggingRedisCache"/>
+
+    <select id="queryIntroduce" parameterType="com.callRing.self.po.User" resultType="com.callRing.self.po.Introduce" useCache="true">
+        SELECT introduceTittle, introduceContent
+        FROM Introduce
+        WHERE userName=#{userName}
+    </select>
+
+    <update id="updateIntroduce" parameterType="com.callRing.self.po.Introduce">
+        update Introduce
+        set introduceTittle=#{introduceTittle},
+        introduceContent=#{introduceTittle}
+        WHERE userName=#{userName}
+    </update>
+
+    <insert id="insertIntroduce" parameterType="com.callRing.self.po.Introduce">
+    insert into Introduce
+    (introduceTittle,
+    introduceContent,
+    userName)
+    values (#{introduceTittle},
+    #{introduceContent},
+    #{userName})
+    </insert>
+
+   <select id="updateOrInsertIntroduce" parameterType="com.callRing.self.po.User" resultType="com.callRing.self.po.Introduce" useCache="true">
+        SELECT userName FROM Introduce
+        WHERE userName=#{userName}
+   </select>
+
+</mapper>

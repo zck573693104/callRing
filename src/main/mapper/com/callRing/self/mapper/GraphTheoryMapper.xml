@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.callRing.self.mapper.GraphTheoryMapper" >
+    <!--  开启二级缓存-->
+    <cache eviction="LRU" type="com.callRing.redis.LoggingRedisCache"/>
+
+    <insert id="insertPicPath" parameterType="com.callRing.self.po.GraphTheory">
+        INSERT INTO GraphTheory
+        (graphTheoryContent,
+        graphTheoryImagePicPath,userName)
+        VALUES
+       <if test="graphTheoryList !=null">
+      <foreach collection="graphTheoryList" item="graphTheory"  separator=",">
+          (#{graphTheory.graphTheoryContent},#{graphTheory.graphTheoryImagePicPath},#{graphTheory.userName})
+      </foreach>
+      </if>
+        <if test="graphTheoryList ==null">
+            (#{graphTheory.graphTheoryContent},#{graphTheory.graphTheoryImagePicPath},#{graphTheory.userName})
+        </if>
+  </insert>
+
+  <select id="queryGraphs" parameterType="com.callRing.self.po.GraphTheory" resultType="com.callRing.self.po.GraphTheory" useCache="true">
+          SELECT * FROM GraphTheory WHERE userName=#{userName}
+  </select>
+
+</mapper>

@@ -31,14 +31,14 @@
 		<property name="configLocation" value="classpath:sqlMap/sqlMapConfig.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:com/*/mapper/*.xml</value>
+				<value>classpath:com/**/mapper/*.xml</value>
 			</list>
 		</property>
 	</bean>
 	<!-- mapper扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
-		<property name="basePackage" value="com.self.mapper,com.friend.mapper"></property>
+		<property name="basePackage" value="com.callRing.*.mapper"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
     </beans>

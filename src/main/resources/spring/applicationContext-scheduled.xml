@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/task
-		http://www.springframework.org/schema/task/spring-task-3.1.xsd">
-	<!--<bean id="friendServiceImpl" class="com.friend.service.serviceImpl.FriendServiceImpl"/>-->
+		http://www.springframework.org/schema/task/spring-task-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
 	<!--&lt;!&ndash;cron表达式：*(秒0-59) *(分钟0-59) *(小时0-23) *(日期1-31) *(月份1-12或是JAN-DEC) *(星期1-7或是SUN-SAT)&ndash;&gt;-->
 
-	<!--<task:scheduler id="jobScheduler" pool-size="10"/>-->
+	<task:scheduler id="jobScheduler" pool-size="10"/>
+	<!-- 自动扫描包注入bean -->
+	<context:component-scan base-package="com.callRing.task"/>
 
-
-	<!--<task:scheduled-tasks scheduler="jobScheduler">-->
-		<!--<task:scheduled ref="friendServiceImpl" method="becomeFriend" cron="0 */1 * * * *" />-->
-	<!--</task:scheduled-tasks>-->
+	<task:scheduled-tasks scheduler="jobScheduler">
+		<task:scheduled ref="job" method="test" cron="0 */1 * * * *" />
+	</task:scheduled-tasks>
 
 </beans>
 
