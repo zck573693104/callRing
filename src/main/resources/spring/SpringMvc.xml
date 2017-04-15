@@ -52,5 +52,7 @@
 	</bean>
 
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
+
 	<bean id="logAspect" class="com.log.LogAspect"/>
+	
     </beans>

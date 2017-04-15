@@ -6,44 +6,51 @@
 
 <generatorConfiguration>
   <!-- 指定mysql的驱动包 -->
+  <classPathEntry location="D:\third\mysql-connector-java-5.1.41-bin.jar" />
 
-  <classPathEntry location="D:\JDP\mysql-connector-java-5.1.41-bin.jar" />
   <context id="bosTables" targetRuntime="MyBatis3">
 
     <!-- 取消生成的代码注释 -->
     <commentGenerator type="org.mybatis.generator.internal.HairyCommentGenerator">
       <property name="javaFileEncoding" value="UTF-8"/>
       <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-      <property name="suppressAllComments" value="false" />
+      <property name="suppressAllComments" value="true" />
       <property name="suppressDate" value="true" />
     </commentGenerator>
 
+
     <!-- 连接配置 -->
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-         connectionURL="jdbc:mysql://127.0.0.1:3306/lw_iot" userId="root" password="root">
+         connectionURL="jdbc:mysql://127.0.0.1:3306/callRing" userId="root" password="root">
     </jdbcConnection>
 
 	<!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
-	<javaModelGenerator targetPackage="com.callRing.module.device.command.model"
+	<javaModelGenerator targetPackage="com.commmon.po"
             targetProject="src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="false" />
     </javaModelGenerator>
 
 	<!-- 生成Mapper 配置文件，给DAO使用 -->
-    <sqlMapGenerator targetPackage="com.callRing.module.device.command.dao" targetProject="src\main\resources">
+    <sqlMapGenerator targetPackage="com.commmon.mapper" targetProject="src\main\mapper">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
 	<!-- javaClientGenerator是应用接口的生成信息  -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.callRing.module.device.command.dao" targetProject="src\main\java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.commmon.mapper" targetProject="src\main\java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-    <table schema="" tableName="dm_virtualdevicetype" domainObjectName="DeviceType"
-			enableCountByExample="false"
-			enableUpdateByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" selectByExampleQueryId="false">
+    <table schema="" tableName="interset" domainObjectName="Interset"
+           enableCountByExample="false"
+           enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false">
+
+    </table>
+    <table schema="" tableName="user_interset_relation" domainObjectName="UserIntersetRelation"
+           enableCountByExample="false"
+           enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false">
 
     </table>
 

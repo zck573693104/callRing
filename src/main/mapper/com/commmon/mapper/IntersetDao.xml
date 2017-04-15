@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.commmon.mapper.IntersetDao">
+  <resultMap id="BaseResultMap" type="com.commmon.po.Interset">
+    <!--
+    @mbggenerated
+    -->
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="hot_Word1" jdbcType="VARCHAR" property="hotWord1" />
+    <result column="hot_Word2" jdbcType="VARCHAR" property="hotWord2" />
+    <result column="hot_Word3" jdbcType="VARCHAR" property="hotWord3" />
+    <result column="hot_Word4" jdbcType="VARCHAR" property="hotWord4" />
+    <result column="hot_Word5" jdbcType="VARCHAR" property="hotWord5" />
+    <result column="hot_Word6" jdbcType="VARCHAR" property="hotWord6" />
+    <result column="hot_Word7" jdbcType="VARCHAR" property="hotWord7" />
+    <result column="hot_Word8" jdbcType="VARCHAR" property="hotWord8" />
+    <result column="hot_Word9" jdbcType="VARCHAR" property="hotWord9" />
+    <result column="hot_Word10" jdbcType="VARCHAR" property="hotWord10" />
+    <result column="fir_Time" jdbcType="DATE" property="firTime" />
+    <result column="last_up_time" jdbcType="DATE" property="lastUpTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.commmon.po.Interset">
+    <!--
+    @mbggenerated
+    -->
+    insert into interset (id, name, description, 
+      hot_Word1, hot_Word2, hot_Word3, 
+      hot_Word4, hot_Word5, hot_Word6, 
+      hot_Word7, hot_Word8, hot_Word9, 
+      hot_Word10, fir_Time, last_up_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{hotWord1,jdbcType=VARCHAR}, #{hotWord2,jdbcType=VARCHAR}, #{hotWord3,jdbcType=VARCHAR}, 
+      #{hotWord4,jdbcType=VARCHAR}, #{hotWord5,jdbcType=VARCHAR}, #{hotWord6,jdbcType=VARCHAR}, 
+      #{hotWord7,jdbcType=VARCHAR}, #{hotWord8,jdbcType=VARCHAR}, #{hotWord9,jdbcType=VARCHAR}, 
+      #{hotWord10,jdbcType=VARCHAR}, #{firTime,jdbcType=DATE}, #{lastUpTime,jdbcType=DATE}
+      )
+  </insert>
+
+</mapper>
