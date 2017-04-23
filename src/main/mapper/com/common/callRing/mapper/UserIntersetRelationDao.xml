@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.common.callRing.mapper.UserIntersetRelationDao">
+  <resultMap id="BaseResultMap" type="com.callRing.common.po.UserIntersetRelation">
+    <!--
+    @mbggenerated
+    -->
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="interset_id" jdbcType="VARCHAR" property="intersetId" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
+  </resultMap>
+  <insert id="insert" parameterType="com.callRing.common.po.UserIntersetRelation">
+    <!--
+    @mbggenerated
+    -->
+    insert into user_interset_relation (user_id, interset_id, context
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{intersetId,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.callRing.common.po.UserIntersetRelation">
+    <!--
+    @mbggenerated
+    -->
+    insert into user_interset_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="intersetId != null">
+        interset_id,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="intersetId != null">
+        #{intersetId,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

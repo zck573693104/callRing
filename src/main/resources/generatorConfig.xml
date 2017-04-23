@@ -25,19 +25,19 @@
     </jdbcConnection>
 
 	<!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
-	<javaModelGenerator targetPackage="com.common.po"
+	<javaModelGenerator targetPackage="com.callRing.common.po"
             targetProject="src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="false" />
     </javaModelGenerator>
 
 	<!-- 生成Mapper 配置文件，给DAO使用 -->
-    <sqlMapGenerator targetPackage="com.common.mapper" targetProject="src\main\mapper">
+    <sqlMapGenerator targetPackage="com.callRing.common.mapper" targetProject="src\main\mapper">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
 	<!-- javaClientGenerator是应用接口的生成信息  -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.common.mapper" targetProject="src\main\java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.callRing.common.mapper" targetProject="src\main\java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
