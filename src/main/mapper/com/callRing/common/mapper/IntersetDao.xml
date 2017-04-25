@@ -2,11 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.callRing.common.mapper.IntersetDao">
   <resultMap id="BaseResultMap" type="com.callRing.common.po.Interset">
-    <!--
-    @mbggenerated
-    -->
     <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="hot_Word1" jdbcType="VARCHAR" property="hotWord1" />
     <result column="hot_Word2" jdbcType="VARCHAR" property="hotWord2" />
@@ -21,27 +19,21 @@
     <result column="fir_Time" jdbcType="DATE" property="firTime" />
     <result column="last_up_time" jdbcType="DATE" property="lastUpTime" />
   </resultMap>
-  <insert id="insert" parameterType="com.callRing.common.po.Interset">
-    <!--
-    @mbggenerated
-    -->
-    insert into interset (id, name, description, 
-      hot_Word1, hot_Word2, hot_Word3, 
-      hot_Word4, hot_Word5, hot_Word6, 
-      hot_Word7, hot_Word8, hot_Word9, 
-      hot_Word10, fir_Time, last_up_time
-      )
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{hotWord1,jdbcType=VARCHAR}, #{hotWord2,jdbcType=VARCHAR}, #{hotWord3,jdbcType=VARCHAR}, 
-      #{hotWord4,jdbcType=VARCHAR}, #{hotWord5,jdbcType=VARCHAR}, #{hotWord6,jdbcType=VARCHAR}, 
-      #{hotWord7,jdbcType=VARCHAR}, #{hotWord8,jdbcType=VARCHAR}, #{hotWord9,jdbcType=VARCHAR}, 
-      #{hotWord10,jdbcType=VARCHAR}, #{firTime,jdbcType=DATE}, #{lastUpTime,jdbcType=DATE}
-      )
+  <insert id="save" parameterType="com.callRing.common.po.Interset">
+    insert into interset (id, name, context, 
+      description, hot_Word1, hot_Word2, 
+      hot_Word3, hot_Word4, hot_Word5, 
+      hot_Word6, hot_Word7, hot_Word8, 
+      hot_Word9, hot_Word10, fir_Time, 
+      last_up_time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{hotWord1,jdbcType=VARCHAR}, #{hotWord2,jdbcType=VARCHAR}, 
+      #{hotWord3,jdbcType=VARCHAR}, #{hotWord4,jdbcType=VARCHAR}, #{hotWord5,jdbcType=VARCHAR}, 
+      #{hotWord6,jdbcType=VARCHAR}, #{hotWord7,jdbcType=VARCHAR}, #{hotWord8,jdbcType=VARCHAR}, 
+      #{hotWord9,jdbcType=VARCHAR}, #{hotWord10,jdbcType=VARCHAR}, #{firTime,jdbcType=DATE}, 
+      #{lastUpTime,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="com.callRing.common.po.Interset">
-    <!--
-    @mbggenerated
-    -->
+  <insert id="saveSelective" parameterType="com.callRing.common.po.Interset">
     insert into interset
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -49,6 +41,9 @@
       </if>
       <if test="name != null">
         name,
+      </if>
+      <if test="context != null">
+        context,
       </if>
       <if test="description != null">
         description,
@@ -96,6 +91,9 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},

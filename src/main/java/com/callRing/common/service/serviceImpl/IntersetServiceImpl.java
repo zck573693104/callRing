@@ -4,10 +4,14 @@ import com.callRing.common.mapper.IntersetDao;
 import com.callRing.common.po.Interset;
 import com.callRing.common.service.IntersetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by kcz on 2017/4/23.
  */
+@Service
+@Transactional
 public class IntersetServiceImpl implements IntersetService {
 
     @Autowired
@@ -15,11 +19,11 @@ public class IntersetServiceImpl implements IntersetService {
 
     @Override
     public int insert(Interset record) {
-        return intersetDao.insert(record);
+        return intersetDao.save(record);
     }
 
     @Override
     public int insertSelective(Interset record) {
-        return intersetDao.insertSelective(record);
+        return intersetDao.saveSelective(record);
     }
 }

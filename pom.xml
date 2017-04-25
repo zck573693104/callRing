@@ -206,7 +206,6 @@
             <artifactId>mybatis-generator-core</artifactId>
             <version>1.0.1</version>
           </dependency>
-
         </dependencies>
       </plugin>
       <plugin>
