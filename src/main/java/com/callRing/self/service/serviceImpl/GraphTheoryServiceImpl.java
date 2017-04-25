@@ -13,7 +13,6 @@ import java.util.List;
  * Created by kcz on 2016/5/22.
  */
 @Service
-@Transactional
 public class GraphTheoryServiceImpl implements GraphTheoryService {
 
     @Autowired

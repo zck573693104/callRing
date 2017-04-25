@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by kcz on 2016/5/30.
  */
 @Service
-@Transactional
 public class ContactWayServiceImpl implements ContactWayService {
 
     @Autowired

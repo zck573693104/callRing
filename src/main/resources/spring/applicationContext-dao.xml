@@ -30,7 +30,7 @@
 		<property name="configLocation" value="classpath:sqlMap/sqlMapConfig.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:com/**/mapper/*.xml</value>
+				<value>classpath:com/callRing/**/mapper/*.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -11,15 +11,16 @@ import com.callRing.common.service.serviceImpl.IntersetServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 public class TopicProvider {
 
-  @Autowired
-  private IntersetServiceImpl intersetService;
 
-  private JmsTemplate topicJmsTemplate;
+
+  @Autowired
+  private JmsTemplate jmsTemplate;
 
   /**
    * 向指定的topic发布消息
@@ -29,9 +30,9 @@ public class TopicProvider {
    */
   public void publish(final Destination topic, final String msg) {
 
-    topicJmsTemplate.send(topic, new MessageCreator() {
+    jmsTemplate.send(topic, new MessageCreator() {
       public Message createMessage(Session session) throws JMSException {
-        intersetService.insert(getInterset(topic,msg));
+        //intersetService.insert(getInterset(topic,msg));
         System.out.println("TopicProvider 发布了主题：\t" + topic.toString() + "，发布消息内容为:\t" + msg);
         return session.createTextMessage(msg);
       }
@@ -50,7 +51,7 @@ public class TopicProvider {
   }
 
   public void setTopicJmsTemplate(JmsTemplate topicJmsTemplate) {
-    this.topicJmsTemplate = topicJmsTemplate;
+    this.jmsTemplate = topicJmsTemplate;
   }
 
 }

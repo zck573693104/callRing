@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by kcz on 2016/11/14.
  */
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired

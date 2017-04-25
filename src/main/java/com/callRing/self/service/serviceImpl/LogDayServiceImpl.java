@@ -14,7 +14,6 @@ import java.util.List;
  * Created by kcz on 2016/6/4.
  */
 @Service
-@Transactional
 public class LogDayServiceImpl implements LogDayService {
 
     @Autowired
