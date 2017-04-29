@@ -6,6 +6,8 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.listener.SessionAwareMessageListener;
 
 /**
@@ -16,7 +18,8 @@ import org.springframework.jms.listener.SessionAwareMessageListener;
 public class ConsumerSessionAwareMessageListener
     implements
       SessionAwareMessageListener<TextMessage> {
-
+  @Autowired
+  @Qualifier("queueDestination")
   private Destination destination;
 
   public void onMessage(TextMessage message, Session session) throws JMSException {

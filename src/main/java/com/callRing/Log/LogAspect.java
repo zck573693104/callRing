@@ -1,9 +1,8 @@
-package com.callRing.log;
+package com.callRing.Log;
 
 /**
- * Created by lw-yf-020 on 2017/3/8.
+ * Created by kcz on 2017/4/29.
  */
-
 import org.apache.commons.lang.reflect.FieldUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

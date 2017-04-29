@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by kcz on 2017/4/23.
  */
 @Service
-@Transactional
 public class IntersetServiceImpl implements IntersetService {
 
     @Autowired

@@ -1,5 +1,7 @@
 package com.callRing.activeMq.queeue;
 
+import org.springframework.stereotype.Component;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;

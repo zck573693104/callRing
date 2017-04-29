@@ -1,30 +1,35 @@
 package com.callRing.activeMq.topic;
 
+
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
-
 import com.callRing.common.po.Interset;
-import com.callRing.common.po.UserIntersetRelation;
+import com.callRing.common.service.IntersetService;
 import com.callRing.common.service.serviceImpl.IntersetServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 
+import java.util.Date;
+@Service
 public class TopicProvider {
 
-
+  @Autowired
+  private IntersetServiceImpl intersetServiceImpl;
 
   @Autowired
+  @Qualifier("topicJmsTemplate")
   private JmsTemplate jmsTemplate;
 
   /**
    * 向指定的topic发布消息
-   * 
+   *
    * @param topic
    * @param msg
    */
@@ -32,7 +37,7 @@ public class TopicProvider {
 
     jmsTemplate.send(topic, new MessageCreator() {
       public Message createMessage(Session session) throws JMSException {
-        //intersetService.insert(getInterset(topic,msg));
+        intersetServiceImpl.insert(getInterset(topic,msg));
         System.out.println("TopicProvider 发布了主题：\t" + topic.toString() + "，发布消息内容为:\t" + msg);
         return session.createTextMessage(msg);
       }

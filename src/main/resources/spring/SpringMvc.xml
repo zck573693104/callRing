@@ -18,6 +18,8 @@
 	<!-- 注解代替了注解映射器适配器 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 
+	<!-- 配置springContextHolder,可以在这个类中拿到spring管理的所有类 -->
+	<bean id="springContextHolder" class="com.callRing.spring.SpringContextHolder" lazy-init="false" />
 
 
 	<!-- 异常处理 -->
@@ -49,8 +51,8 @@
 		</property>
 	</bean>
 
-	<aop:aspectj-autoproxy proxy-target-class="true"/>
 
-	<bean id="logAspect" class="com.callRing.log.LogAspect"/>
+
+
 
     </beans>
