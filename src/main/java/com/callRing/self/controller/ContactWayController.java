@@ -1,6 +1,7 @@
 package com.callRing.self.controller;
 
 import com.callRing.self.po.ContactWay;
+import com.callRing.self.service.ContactWayService;
 import com.callRing.self.service.serviceImpl.ContactWayServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class ContactWayController {
 
     @Autowired
-    private ContactWayServiceImpl contactWayService;
+    private ContactWayService contactWayService;
 
     @RequestMapping("/insertContactWay")
     public String insertContactWay(HttpSession session,ContactWay contactWay) throws Exception {

@@ -2,6 +2,8 @@ package com.callRing.self.controller;
 
 import com.callRing.self.po.GraphTheory;
 import com.callRing.self.po.LogDay;
+import com.callRing.self.service.GraphTheoryService;
+import com.callRing.self.service.LogDayService;
 import com.callRing.self.service.serviceImpl.GraphTheoryServiceImpl;
 import com.callRing.self.service.serviceImpl.LogDayServiceImpl;
 import com.callRing.util.UploadFileUtils;
@@ -26,10 +28,10 @@ import java.util.List;
 public class GraphTheoryController {
 
     @Autowired
-    private LogDayServiceImpl logDayService;
+    private LogDayService logDayService;
 
     @Autowired
-    private GraphTheoryServiceImpl graphTheoryService;
+    private GraphTheoryService graphTheoryService;
 
     @RequestMapping("/insertPicPath")
     public String insertPicPath(HttpSession session,@RequestParam MultipartFile[] graphTheories,String graphTheoryContent, HttpServletRequest request) throws Exception {

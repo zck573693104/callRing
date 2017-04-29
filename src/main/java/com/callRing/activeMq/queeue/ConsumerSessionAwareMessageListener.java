@@ -15,26 +15,20 @@ import org.springframework.jms.listener.SessionAwareMessageListener;
  * 
  * onMessage()有2个参数，一个是收到的消息，另一个Session可以用于发送回复消息。
  */
-public class ConsumerSessionAwareMessageListener
-    implements
-      SessionAwareMessageListener<TextMessage> {
-  @Autowired
-  @Qualifier("queueDestination")
-  private Destination destination;
+public class ConsumerSessionAwareMessageListener implements SessionAwareMessageListener<TextMessage> {
+	@Autowired
+	@Qualifier("queueDestination")
+	private Destination destination;
 
-  public void onMessage(TextMessage message, Session session) throws JMSException {
-    // 接受消息
-    System.out.println("SessionAwareMessageListener收到一条消息：\t" + message.getText());
+	public void onMessage(TextMessage message, Session session) throws JMSException {
+		// 接受消息
+		System.out.println("SessionAwareMessageListener收到一条消息：\t" + message.getText());
 
-    // 发送消息
-    MessageProducer producer = session.createProducer(destination);
-    TextMessage tm = session.createTextMessage("I am ConsumerSessionAwareMessageListener");
-    producer.send(tm);
+		// 发送消息
+		MessageProducer producer = session.createProducer(destination);
+		TextMessage tm = session.createTextMessage("I am ConsumerSessionAwareMessageListener");
+		producer.send(tm);
 
-  }
-
-  public void setDestination(Destination destination) {
-    this.destination = destination;
-  }
+	}
 
 }

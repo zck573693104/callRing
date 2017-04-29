@@ -2,6 +2,7 @@ package com.callRing.friend.controller;
 
 
 import com.callRing.friend.po.Message;
+import com.callRing.friend.service.MessageService;
 import com.callRing.friend.service.serviceImpl.MessageServiceImpl;
 import com.callRing.friend.websocket.MyWebSocketHandler;
 import com.google.gson.GsonBuilder;
@@ -29,7 +30,7 @@ public class MessageController {
 	private MyWebSocketHandler handler;
 
 	@Autowired
-	private MessageServiceImpl messageService;
+	private MessageService messageService;
 
 	/**
 	 * 读取离线消息并进行删除消息记录 将记录设置为已读false

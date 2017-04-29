@@ -3,6 +3,7 @@ package com.callRing.self.controller;
 
 import com.callRing.self.po.GraphTheory;
 import com.callRing.self.po.User;
+import com.callRing.self.service.GraphTheoryService;
 import com.callRing.self.service.UserService;
 import com.callRing.self.service.serviceImpl.GraphTheoryServiceImpl;
 import com.callRing.util.UploadFileUtils;
@@ -26,7 +27,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
-	 private GraphTheoryServiceImpl graphTheoryService;
+	 private GraphTheoryService graphTheoryService;
 
 	@Autowired
 	private UserService userService;

@@ -1,5 +1,6 @@
 package com.callRing.self.controller;
 
+import com.callRing.self.service.IntroduceService;
 import com.callRing.self.service.serviceImpl.IntroduceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IntroduceController {
 
     @Autowired
-    private IntroduceServiceImpl introduceService;
+    private IntroduceService introduceService;
 
     @RequestMapping("/get")
     public void get(){}

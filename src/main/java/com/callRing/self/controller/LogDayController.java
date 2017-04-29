@@ -2,6 +2,7 @@ package com.callRing.self.controller;
 
 import com.callRing.self.po.LogDay;
 import com.callRing.self.po.User;
+import com.callRing.self.service.LogDayService;
 import com.callRing.self.service.serviceImpl.LogDayServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.List;
 public class LogDayController {
 
     @Autowired
-    private LogDayServiceImpl logDayService;
+    private LogDayService logDayService;
 
     @RequestMapping("/queryLogDay")
     @ResponseBody
