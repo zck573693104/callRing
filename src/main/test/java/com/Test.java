@@ -18,6 +18,6 @@ public class Test extends BaseJunit4Test {
 
     @org.junit.Test
     public void test (){
-        topicProvider.publish(destination,"");
+        topicProvider.publish("test");
     }
 }

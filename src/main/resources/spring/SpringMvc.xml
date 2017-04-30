@@ -20,8 +20,10 @@
 
 	<!-- 配置springContextHolder,可以在这个类中拿到spring管理的所有类 -->
 	<bean id="springContextHolder" class="com.callRing.spring.SpringContextHolder" lazy-init="false" />
-
-
+<!--* JDK动态代理只能对实现了接口的类生成代理，而不能针对类
+* CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法
+  因为是继承，所以该类或方法最好不要声明成final-->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	<!-- 异常处理 -->
 	<!--<bean class="com.selfcontroller.ExceptionController"/>-->
 	

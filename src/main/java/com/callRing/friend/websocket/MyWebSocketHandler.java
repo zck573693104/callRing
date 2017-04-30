@@ -14,18 +14,17 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class MyWebSocketHandler implements WebSocketHandler {
-
-	private Message msg = null;// 设置成员变量 为了set信息方便存入数据库
 
 	@Autowired
 	private MessageService messageService;
 
 	private static final Logger logger = LoggerFactory.getLogger(MyWebSocketHandler.class);
 
-	public Map<String, WebSocketSession> userSocketSessionMap = new HashMap<String, WebSocketSession>();
+	public Map<String, WebSocketSession> userSocketSessionMap = new ConcurrentHashMap<>();
 
 	/**
 	 * 建立连接后
@@ -43,10 +42,11 @@ public class MyWebSocketHandler implements WebSocketHandler {
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
 		if (message.getPayloadLength() == 0)
 			return;
-		msg = new Gson().fromJson(message.getPayload().toString(), Message.class);
-		msg.setSendDate(new Timestamp(new Date().getTime()));
-		sendMessageToUser(msg.getFriendName(),
-				new TextMessage(new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create().toJson(msg)));// 消息发送通过这个方法
+		Message messagePo = new Message();
+		messagePo = new Gson().fromJson(message.getPayload().toString(), Message.class);
+		messagePo.setSendDate(new Timestamp(new Date().getTime()));
+		sendMessageToUser(messagePo,
+				new TextMessage(new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create().toJson(messagePo)));// 消息发送通过这个方法
 	}
 
 	/**
@@ -130,15 +130,15 @@ public class MyWebSocketHandler implements WebSocketHandler {
 	/**
 	 * 给某个用户发送消息
 	 * 
-	 * @param friendName
+	 * @param messagePo
 	 * @param message
 	 * @throws IOException
 	 */
-	public void sendMessageToUser(String friendName, TextMessage message) throws IOException {
+	public void sendMessageToUser(Message messagePo , TextMessage message) throws IOException {
 		List<Message> messageList = new ArrayList<>();
-		msg.setSendTimestamp(new Timestamp(System.currentTimeMillis()));
-		messageList.add(msg);
-		WebSocketSession session = userSocketSessionMap.get(friendName);
+		messagePo.setSendTimestamp(new Timestamp(System.currentTimeMillis()));
+		messageList.add(messagePo);
+		WebSocketSession session = userSocketSessionMap.get(messagePo.getFriendName());
 		if (session != null && session.isOpen()) {
 			session.sendMessage(message);// friendName的session 如果接收者不在线session是关闭的
 

@@ -24,13 +24,28 @@ public class TopicProvider {
 	@Qualifier("topicJmsTemplate")
 	private JmsTemplate jmsTemplate;
 
+	@Autowired
+	@Qualifier("topicDestination")
+	private Destination destination;
+
+	public void publish(final String msg) {
+
+		jmsTemplate.send(destination, new MessageCreator() {
+			public Message createMessage(Session session) throws JMSException {
+				intersetService.insert(getInterset(destination, msg));
+				System.out.println("TopicProvider 发布了主题：\t" + destination.toString() + "，发布消息内容为:\t" + msg);
+				return session.createTextMessage(msg);
+			}
+		});
+	}
+
 	/**
 	 * 向指定的topic发布消息
 	 *
 	 * @param topic
 	 * @param msg
 	 */
-	public void publish(final Destination topic, final String msg) {
+	public void publishByTopic(final Destination topic, final String msg) {
 
 		jmsTemplate.send(topic, new MessageCreator() {
 			public Message createMessage(Session session) throws JMSException {
