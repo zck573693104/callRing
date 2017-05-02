@@ -5,9 +5,10 @@ import com.callRing.friend.po.Message;
 import com.callRing.friend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
+
 @Service
 public class MessageServiceImpl implements MessageService {
 
@@ -38,6 +39,11 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public void updateMessageBoolean(Message message) throws Exception {
 		messageMapper.updateMessageBoolean(message);
+	}
+
+	@Override
+	public List<Message> getMessage(Date beginDate, Date endDate) throws Exception {
+		return messageMapper.getMessage(beginDate,endDate);
 	}
 
 }

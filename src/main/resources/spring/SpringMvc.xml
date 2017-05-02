@@ -17,7 +17,7 @@
 
 	<!-- 注解代替了注解映射器适配器 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-
+	<bean id="jiebaSegmenter" class="com.huaban.analysis.jieba.JiebaSegmenter"/>
 	<!-- 配置springContextHolder,可以在这个类中拿到spring管理的所有类 -->
 	<bean id="springContextHolder" class="com.callRing.spring.SpringContextHolder" lazy-init="false" />
 <!--* JDK动态代理只能对实现了接口的类生成代理，而不能针对类
@@ -53,8 +53,7 @@
 		</property>
 	</bean>
 
-
-
+	<import resource="scheduled.xml"/>
 
 
     </beans>

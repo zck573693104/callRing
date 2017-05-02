@@ -5,7 +5,8 @@ import com.callRing.common.po.Interset;
 import com.callRing.common.service.IntersetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by kcz on 2017/4/23.
@@ -21,8 +22,9 @@ public class IntersetServiceImpl implements IntersetService {
         return intersetDao.save(record);
     }
 
+
     @Override
-    public int insertSelective(Interset record) {
-        return intersetDao.saveSelective(record);
+    public void batchSave(List<Interset> intersetList) {
+        intersetDao.batchSave(intersetList);
     }
 }

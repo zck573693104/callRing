@@ -13,6 +13,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class TopicProvider {
@@ -59,11 +60,10 @@ public class TopicProvider {
 	private Interset getInterset(Destination topic, final String msg) {
 		Date date = new Date();
 		Interset interset = new Interset();
+		interset.setId(UUID.randomUUID().toString());
 		interset.setName(topic.toString());
-		interset.setContext(msg);
 		interset.setLastUpTime(date);
 		interset.setFirTime(date);
-		interset.setDescription("");
 		return interset;
 	}
 

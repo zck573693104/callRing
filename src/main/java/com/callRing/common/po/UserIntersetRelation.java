@@ -1,9 +1,6 @@
 package com.callRing.common.po;
 
-import java.io.Serializable;
-
-public class UserIntersetRelation implements Serializable {
-    private static final long serialVersionUID = 6043990721792135791L;
+public class UserIntersetRelation {
     /** 用户id **/
     private String userId;
 

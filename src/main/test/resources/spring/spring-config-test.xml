@@ -16,7 +16,7 @@
     <context:component-scan base-package="com.callRing"></context:component-scan>
     <!-- 注解代替了注解映射器适配器 -->
     <mvc:annotation-driven></mvc:annotation-driven>
-
+    <bean id="jiebaSegmenter" class="com.huaban.analysis.jieba.JiebaSegmenter"/>
     <!-- 配置springContextHolder,可以在这个类中拿到spring管理的所有类 -->
     <bean id="springContextHolder" class="com.callRing.spring.SpringContextHolder" lazy-init="false" />
 
@@ -50,7 +50,7 @@
         </property>
     </bean>
 
-
+<import resource="scheduled.xml"/>
 
 
 

@@ -16,27 +16,38 @@
             </foreach>
         </if>
     </insert>
+
    <select id="selectOfflineMessage" parameterType="com.callRing.friend.po.Message" resultType="com.callRing.friend.po.Message" >
        SELECT * from message
        WHERE userName=#{friendName}
        AND friendName=#{userName} AND `read`=TRUE
    </select>
+
     <update id="updateMessageBoolean" parameterType="com.callRing.friend.po.Message">
       UPDATE message SET `read`=FALSE
       WHERE userName=#{friendName}
       AND friendName=#{userName}
       AND `read`=TRUE
     </update>
+
     <delete id="deleteOfflineMessage" parameterType="com.callRing.friend.po.Message">
         DELETE FROM message
         WHERE userName=#{friendName}
         AND friendName=#{userName}
     </delete>
+
     <select id="countMessageList" parameterType="com.callRing.friend.po.Message" resultType="com.callRing.friend.po.Message">
       select *,count(text) AS `count`
       from message
       where friendname=#{userName}
       AND `read`=TRUE
       group by username
+    </select>
+
+    <select id="getMessage" resultType="com.callRing.friend.po.Message">
+       SELECT userName,friendName,text from message
+       WHERE sendTimestamp
+       BETWEEN #{beginDate}
+       AND #{endDate}
     </select>
 </mapper>

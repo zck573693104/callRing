@@ -9,11 +9,9 @@
 	<!--&lt;!&ndash;cron表达式：*(秒0-59) *(分钟0-59) *(小时0-23) *(日期1-31) *(月份1-12或是JAN-DEC) *(星期1-7或是SUN-SAT)&ndash;&gt;-->
 
 	<task:scheduler id="jobScheduler" pool-size="10"/>
-	<bean id="job" class="com.callRing.task.Job"/>
-
 
 	<task:scheduled-tasks scheduler="jobScheduler">
-		<task:scheduled ref="job" method="test" cron="0 */1 * * * *" />
+		<task:scheduled ref="job" method="getContext" cron="0 */1 * * * *" />
 	</task:scheduled-tasks>
 
 </beans>

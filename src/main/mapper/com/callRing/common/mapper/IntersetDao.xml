@@ -4,34 +4,15 @@
   <resultMap id="BaseResultMap" type="com.callRing.common.po.Interset">
     <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="context" jdbcType="VARCHAR" property="context" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="hot_Word1" jdbcType="VARCHAR" property="hotWord1" />
-    <result column="hot_Word2" jdbcType="VARCHAR" property="hotWord2" />
-    <result column="hot_Word3" jdbcType="VARCHAR" property="hotWord3" />
-    <result column="hot_Word4" jdbcType="VARCHAR" property="hotWord4" />
-    <result column="hot_Word5" jdbcType="VARCHAR" property="hotWord5" />
-    <result column="hot_Word6" jdbcType="VARCHAR" property="hotWord6" />
-    <result column="hot_Word7" jdbcType="VARCHAR" property="hotWord7" />
-    <result column="hot_Word8" jdbcType="VARCHAR" property="hotWord8" />
-    <result column="hot_Word9" jdbcType="VARCHAR" property="hotWord9" />
-    <result column="hot_Word10" jdbcType="VARCHAR" property="hotWord10" />
+    <result column="hot_Word" jdbcType="VARCHAR" property="hotWord" />
     <result column="fir_Time" jdbcType="DATE" property="firTime" />
     <result column="last_up_time" jdbcType="DATE" property="lastUpTime" />
   </resultMap>
   <insert id="save" parameterType="com.callRing.common.po.Interset">
-    insert into interset (id, name, context, 
-      description, hot_Word1, hot_Word2, 
-      hot_Word3, hot_Word4, hot_Word5, 
-      hot_Word6, hot_Word7, hot_Word8, 
-      hot_Word9, hot_Word10, fir_Time, 
-      last_up_time)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{hotWord1,jdbcType=VARCHAR}, #{hotWord2,jdbcType=VARCHAR}, 
-      #{hotWord3,jdbcType=VARCHAR}, #{hotWord4,jdbcType=VARCHAR}, #{hotWord5,jdbcType=VARCHAR}, 
-      #{hotWord6,jdbcType=VARCHAR}, #{hotWord7,jdbcType=VARCHAR}, #{hotWord8,jdbcType=VARCHAR}, 
-      #{hotWord9,jdbcType=VARCHAR}, #{hotWord10,jdbcType=VARCHAR}, #{firTime,jdbcType=DATE}, 
-      #{lastUpTime,jdbcType=DATE})
+    insert into interset (id, name, hot_Word, 
+      fir_Time, last_up_time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{hotWord,jdbcType=VARCHAR}, 
+      #{firTime,jdbcType=DATE}, #{lastUpTime,jdbcType=DATE})
   </insert>
   <insert id="saveSelective" parameterType="com.callRing.common.po.Interset">
     insert into interset
@@ -42,41 +23,8 @@
       <if test="name != null">
         name,
       </if>
-      <if test="context != null">
-        context,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="hotWord1 != null">
-        hot_Word1,
-      </if>
-      <if test="hotWord2 != null">
-        hot_Word2,
-      </if>
-      <if test="hotWord3 != null">
-        hot_Word3,
-      </if>
-      <if test="hotWord4 != null">
-        hot_Word4,
-      </if>
-      <if test="hotWord5 != null">
-        hot_Word5,
-      </if>
-      <if test="hotWord6 != null">
-        hot_Word6,
-      </if>
-      <if test="hotWord7 != null">
-        hot_Word7,
-      </if>
-      <if test="hotWord8 != null">
-        hot_Word8,
-      </if>
-      <if test="hotWord9 != null">
-        hot_Word9,
-      </if>
-      <if test="hotWord10 != null">
-        hot_Word10,
+      <if test="hotWord != null">
+        hot_Word,
       </if>
       <if test="firTime != null">
         fir_Time,
@@ -92,41 +40,8 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="context != null">
-        #{context,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord1 != null">
-        #{hotWord1,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord2 != null">
-        #{hotWord2,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord3 != null">
-        #{hotWord3,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord4 != null">
-        #{hotWord4,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord5 != null">
-        #{hotWord5,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord6 != null">
-        #{hotWord6,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord7 != null">
-        #{hotWord7,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord8 != null">
-        #{hotWord8,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord9 != null">
-        #{hotWord9,jdbcType=VARCHAR},
-      </if>
-      <if test="hotWord10 != null">
-        #{hotWord10,jdbcType=VARCHAR},
+      <if test="hotWord != null">
+        #{hotWord,jdbcType=VARCHAR},
       </if>
       <if test="firTime != null">
         #{firTime,jdbcType=DATE},
@@ -135,5 +50,16 @@
         #{lastUpTime,jdbcType=DATE},
       </if>
     </trim>
+  </insert>
+  <insert id="batchSave" parameterType="com.callRing.common.po.Interset">
+    insert into interset (id, name, hot_Word, fir_Time,last_up_time)
+    values
+    <foreach collection="list" index="index" item="interset" separator=",">
+      (#{interset.id,jdbcType=VARCHAR},
+      #{interset.name,jdbcType=VARCHAR},
+      #{interset.hotWord,jdbcType=VARCHAR},
+      #{interset.firTime,jdbcType=DATE},
+      #{interset.lastUpTime,jdbcType=DATE})
+    </foreach>
   </insert>
 </mapper>

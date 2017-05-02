@@ -3,6 +3,7 @@ package com.callRing.friend.mapper;
 import com.callRing.friend.po.Message;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,4 +20,6 @@ public interface MessageMapper {
 	List<Message> countMessageList(Message message);
 
 	void updateMessageBoolean(Message message);
+
+	List<Message> getMessage(@Param("beginDate")Date beginDate, @Param("endDate")Date endDate);
 }
