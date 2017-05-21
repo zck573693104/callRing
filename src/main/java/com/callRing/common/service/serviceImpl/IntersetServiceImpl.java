@@ -19,6 +19,9 @@ public class IntersetServiceImpl implements IntersetService {
 	@Autowired
 	private IntersetDao intersetDao;
 
+
+
+
 	@Override
 	public int insert(Interset record) {
 		return intersetDao.save(record);
