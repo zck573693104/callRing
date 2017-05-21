@@ -12,4 +12,6 @@ public interface IntersetService {
     int insert(Interset record);
 
     void batchSave(List<Interset> intersetList);
+
+    List<String>getHotWord(String name);
 }

@@ -1,6 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getServerName() + ":"
+            + request.getServerPort() + path + "/";
+    String basePath2 = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <!DOCTYPE html>
 <!-- saved from url=(0021)http://feei.top/zxdx/ -->
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +16,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=750,target-densitydpi=340,user-scalable=no">
 <title>个人资料</title>
-    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" href="../css/public.css">
 <style>
 body{ background:#F7F7F7 !important}

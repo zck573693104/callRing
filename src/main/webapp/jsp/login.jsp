@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+//basePath = "http://localhost:8080/manager_4/"
+%>
 <html lang="en" class="no-js">
 
 <head>
@@ -21,7 +25,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="js/jquery.js"></script>
-    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
     <script type="text/javascript">
 
         //点击表单“提交”按钮

@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/swiper.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/uploadFile.css" />
 <link rel="stylesheet" type="text/css" href="../js/layer/skin/default/layer.css"/>
-<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/swiper.js"></script>
 <script src="../js/layer/mobile/layer.js"></script>
 <style>
@@ -608,7 +608,7 @@
     </div>
     <ul class="nav">
         <li><a href="${pageContext.request.contextPath}/jsp/data.jsp" style="background:url(${pageContext.request.contextPath}/img/70%20Basic%20Icons-all-05.svg) 75px 30px no-repeat;">个人资料</a></li>
-        <li><a href="${pageContext.request.contextPath}/jsp/feedback.jsp" style="background:url(${pageContext.request.contextPath}/img/70%20Basic%20Icons-all-63.svg) 75px 30px no-repeat">看</a></li>
+        <li><a href="${pageContext.request.contextPath}/jsp/interset.jsp" style="background:url(${pageContext.request.contextPath}/img/70%20Basic%20Icons-all-63.svg) 75px 30px no-repeat">看</a></li>
         <li><a href="${pageContext.request.contextPath}/jsp/feedback.jsp" style="background:url(${pageContext.request.contextPath}/img/70%20Basic%20Icons-all-63.svg) 75px 30px no-repeat">意见反馈</a></li>
         <li><a href="${pageContext.request.contextPath}/jsp/about_us.jsp" style="background:url(${pageContext.request.contextPath}/img/70%20Basic%20Icons-all-16.svg) 75px 30px no-repeat">关于我们</a></li>
         <li style=" padding-top:10px; height:90px; text-align:center"><button onclick="location.href='${pageContext.request.contextPath}/logoin.jsp';">退出登陆</button></li>

@@ -15,7 +15,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
     <style>
         textarea {
             height: 300px;

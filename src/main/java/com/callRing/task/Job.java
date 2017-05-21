@@ -4,6 +4,7 @@ import com.callRing.common.po.Interset;
 import com.callRing.common.service.IntersetService;
 import com.callRing.friend.po.Message;
 import com.callRing.friend.service.MessageService;
+import com.callRing.self.service.GraphTheoryService;
 import com.callRing.spark.WordCount;
 import com.huaban.analysis.jieba.JiebaSegmenter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class Job implements Serializable {
 
 	private static final String splitString = "@";
 	private static final long serialVersionUID = -4099092846577558755L;
-
+	@Autowired
+	private GraphTheoryService graphTheoryService;
 	@Autowired
 	private MessageService messageService;
 
@@ -34,10 +36,10 @@ public class Job implements Serializable {
 	@Autowired
 	private IntersetService intersetService;
 
-	public Map<String, Map> getContext() throws Exception {
+	public Map<String, Map<String,String>> getContext() throws Exception {
 		Map<String, List<String>> stringListMap = new HashMap<>();
 		List<Map<String, List<String>>> sentenceList = new ArrayList<>();
-		Map<String, Map> mapMap = new TreeMap<>();
+		Map<String, Map<String,String>> mapMap = new TreeMap<>();
 		Map<String, StringBuilder> intersetMap = new HashMap<>();
 		Date beginDate = new Date();
 		beginDate.setHours(00);
@@ -54,19 +56,31 @@ public class Job implements Serializable {
 			// 统计每个词语出现的频率
 			byWordCount(sentenceList, mapMap);
 			// 进行排序
-			Map<String, List<Map.Entry<String, Integer>>> listMap = getHotEveryDay(mapMap);
+			Map<String, List<Map.Entry<String, String>>> listMap = getHotEveryDay(mapMap);
 			saveHotEveryDay(listMap);
+			dealResult(mapMap);
 		}
 		return mapMap;
 	}
 
-	private void saveHotEveryDay(Map<String, List<Map.Entry<String, Integer>>> listMap) {
+	private void dealResult(Map<String, Map<String,String>> mapMap) {
+		for (Map.Entry<String, Map<String,String>> entry : mapMap.entrySet()) {
+			String [] userNameAndFriendName = entry.getKey().split(splitString);
+			for (Map.Entry<String, String> entry1 : entry.getValue().entrySet()) {
+				String hotWord = entry1.getKey();
+				String frequency = entry1.getValue();
+			}
+
+		}
+	}
+
+	private void saveHotEveryDay(Map<String, List<Map.Entry<String, String>>> listMap) {
 		List<Interset> intersetList = new ArrayList<>();
-		for (Map.Entry<String, List<Map.Entry<String, Integer>>> entry : listMap.entrySet()) {
+		for (Map.Entry<String, List<Map.Entry<String, String>>> entry : listMap.entrySet()) {
 			Interset interset = new Interset();
 			StringBuilder stringBuilder = new StringBuilder();
-			for (Map.Entry<String, Integer> entry1 : entry.getValue()) {
-				stringBuilder.append(entry1.getKey() + ":" + entry1.getValue() + splitString);
+			for (Map.Entry<String, String> entry1 : entry.getValue()) {
+				stringBuilder.append(entry1.getKey() + ":" + entry1.getValue() + splitString+" ");
 			}
 			setBean(interset,entry.getKey(),stringBuilder.toString());
 			intersetList.add(interset);
@@ -94,7 +108,7 @@ public class Job implements Serializable {
 		return 0;
 	}
 
-	private void byWordCount(List<Map<String, List<String>>> sentenceList, Map<String, Map> mapMap) {
+	private void byWordCount(List<Map<String, List<String>>> sentenceList, Map<String, Map<String,String>> mapMap) {
 		for (Map<String, List<String>> wordList : sentenceList) {
 			for (Map.Entry<String, List<String>> entry : wordList.entrySet()) {
 				mapMap.put(entry.getKey(), wordCount.wordCount(entry.getValue()));
@@ -139,14 +153,14 @@ public class Job implements Serializable {
 	 * @return
 	 */
 
-	public Map<String, List<Map.Entry<String, Integer>>> getHotEveryDay(Map<String, Map> wordCountListMap) {
-		Map<String, List<Map.Entry<String, Integer>>> mapList = new LinkedHashMap<>();
-		for (Map.Entry<String, Map> entry : wordCountListMap.entrySet()) {
+	public Map<String, List<Map.Entry<String, String>>> getHotEveryDay(Map<String, Map<String,String>> wordCountListMap) {
+		Map<String, List<Map.Entry<String, String>>> mapList = new LinkedHashMap<>();
+		for (Map.Entry<String, Map<String,String>> entry : wordCountListMap.entrySet()) {
 
-			List<Map.Entry<String, Integer>> list_Data = new ArrayList<Map.Entry<String, Integer>>(
+			List<Map.Entry<String, String>> list_Data = new ArrayList<Map.Entry<String, String>>(
 					entry.getValue().entrySet());
-			Collections.sort(list_Data, new Comparator<Map.Entry<String, Integer>>() {
-				public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+			Collections.sort(list_Data, new Comparator<Map.Entry<String, String>>() {
+				public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
 
 					return o2.getValue().compareTo(o1.getValue());
 

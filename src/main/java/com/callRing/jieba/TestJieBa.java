@@ -21,7 +21,7 @@ public class TestJieBa {
     @Test
     public void testDemo() {
         String[] sentences =
-                new String[] {"天才"};
+                new String[] {"天天天我我我"};
         for (String sentence : sentences) {
 
             System.out.println(jiebaSegmenter.process(sentence, JiebaSegmenter.SegMode.INDEX).toString());

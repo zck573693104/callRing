@@ -10,4 +10,6 @@ public interface IntersetDao {
     int saveSelective(Interset record);
 
     void batchSave(List<Interset> intersetList);
+
+    List<String>getHotWord(String name);
 }

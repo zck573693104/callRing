@@ -1,9 +1,8 @@
 package com.callRing.friend.controller;
 
-import com.callRing.common.service.serviceImpl.IntersetServiceImpl;
+import com.callRing.common.service.IntersetService;
 import com.callRing.friend.po.Friend;
 import com.callRing.friend.service.FriendService;
-import com.callRing.friend.service.serviceImpl.FriendServiceImpl;
 import com.callRing.friend.vo.SpanVo;
 import com.callRing.self.po.User;
 import com.callRing.self.po.UserPo;
@@ -24,6 +23,8 @@ public class FriendController {
 
 	@Autowired
 	private FriendService friendService;
+	@Autowired
+	private IntersetService intersetService;
 
 	@RequestMapping("/queryOftenChatFriend")
 	@ResponseBody
@@ -31,7 +32,7 @@ public class FriendController {
 	User user =new User();
 	user.setUserName((String) session.getAttribute("userName"));
 	List<Friend>friends=friendService.queryOftenChatFriend(user);
-
+	session.setAttribute("hotWordList",intersetService.getHotWord(user.getUserName()));
 		return friends;
 	}
 	/**

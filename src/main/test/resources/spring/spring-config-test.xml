@@ -18,7 +18,7 @@
     <mvc:annotation-driven></mvc:annotation-driven>
     <bean id="jiebaSegmenter" class="com.huaban.analysis.jieba.JiebaSegmenter"/>
     <!-- 配置springContextHolder,可以在这个类中拿到spring管理的所有类 -->
-    <bean id="springContextHolder" class="com.callRing.spring.SpringContextHolder" lazy-init="false" />
+    <bean id="springContextHolder" class="com.callRing.util.SpringContextHolder" lazy-init="false" />
 
 
     <!-- 异常处理 -->

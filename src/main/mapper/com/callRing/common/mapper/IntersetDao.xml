@@ -62,4 +62,8 @@
       #{interset.lastUpTime,jdbcType=DATE})
     </foreach>
   </insert>
+
+  <select id="getHotWord" parameterType="string" resultType="java.lang.String">
+    SELECT hot_Word FROM interset WHERE `name` LIKE CONCAT(CONCAT('%', #{name}), '%')
+  </select>
 </mapper>

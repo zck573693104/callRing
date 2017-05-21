@@ -15,7 +15,7 @@
     <meta name="keywords" content=""/>
     <!--[if lte IE 8]>
     <script src="<%=basePath%>css/ie/html5shiv.js"></script><![endif]-->
-    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
     <script src="<%=basePath%>js/jquery.poptrox.min.js"></script>
     <script src="<%=basePath%>js/skel.min.js"></script>
     <script src="<%=basePath%>js/init.js"></script>

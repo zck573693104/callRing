@@ -1,12 +1,13 @@
-package com.callRing.spring;
+package com.callRing.util;
 
 /**
  * Created by kcz on 2017/4/26.
  */
-import java.util.Collection;
-import java.util.Map;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import java.util.Collection;
+import java.util.Map;
 
 public class SpringContextHolder implements ApplicationContextAware {
     private static ApplicationContext applicationContext;

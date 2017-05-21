@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="<%=basePath%>jquery/jquery.mobile.structure-1.4.3.css">
 <link rel="stylesheet" href="<%=basePath%>jquery/jquery.mobile.inline-png-1.4.3.css">
 <link rel="stylesheet" href="<%=basePath%>jquery/jquery.mobile.external-png-1.4.3.css">
- <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
 <script src="<%=basePath%>jquery/jquery.mobile-1.4.3.js"></script>
 <script src="<%=basePath%>jquery/loading.js"></script>
 
