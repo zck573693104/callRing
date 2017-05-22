@@ -5,18 +5,15 @@
     String path = request.getContextPath();
     String basePath = request.getServerName() + ":"
             + request.getServerPort() + path + "/";
-    String basePath2 = request.getScheme() + "://"
-            + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
 %>
 <!DOCTYPE html>
-<!-- saved from url=(0021)http://feei.top/zxdx/ -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN">
+<head>
+    <title>个人资料</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=750,target-densitydpi=340,user-scalable=no">
-<title>个人资料</title>
-    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
+    <script src="../jquery/jquery-1.6.2.min.js"></script>
+
 <link rel="stylesheet" href="../css/public.css">
 <style>
 body{ background:#F7F7F7 !important}
@@ -34,62 +31,28 @@ body{ background:#F7F7F7 !important}
         .file {
             position: relative;
             display: inline-block;
-            /*background: #D0EEFF;*/
-            /*border: 1px solid #99D3F5;*/
-            /*border-radius: 4px;*/
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
             padding: 4px 12px;
             overflow: hidden;
             color: #1E88C7;
             text-decoration: none;
             text-indent: 0;
-            height: 80px;
-            width:82px;
+            line-height: 20px;
         }
         .file input {
             position: absolute;
-            font-size: 20px;
+            font-size: 100px;
             right: 0;
-            top: 34px;
+            top: 0;
             opacity: 0;
-
-        }
-        .file .chang-text{
-            display:block;
-            width:82px;
-            height:30px;
-            text-align:center;
-            line-height:30px;
-            position: absolute;
-            font-size: 14px;
-            right: 0;
-            top: 34px;
-            background: #D0EEFF;
-            border: 1px solid #99D3F5;
-            border-radius: 4px;
-
         }
         .file:hover {
             background: #AADFFD;
             border-color: #78C3F3;
             color: #004974;
             text-decoration: none;
-        }
-        .head-img{
-            width:80px;
-            height:80px;
-            border-radius:50%;
-            margin-right:14px;
-        }
-        .change-img{
-            width:82px;
-            height:30px;
-        }
-        textarea{
-            outline:none;
-            border-radius:5px !important;
-        }
-        a:hover{
-            background:none !important;
         }
     </style>
  <script type="text/javascript">
@@ -111,7 +74,8 @@ body{ background:#F7F7F7 !important}
 
 
 </script>
-</head>
+
+
 <body id="body_bg">
     <div class="nav_data">
         <div class="left" onclick="window.history.go(-1)">个人资料</div>
@@ -128,8 +92,8 @@ body{ background:#F7F7F7 !important}
         <%--</ul>--%>
                 <h1>头像</h1>
                 <div>
-                    <img src="${pageContext.request.contextPath}/img/a4.jpg" class="head-img"/>
-                    <a href="javascript: void(0);" class="file">
+                    <img src="${pageContext.request.contextPath}/upload/callRing/${userHeadPortraitPath}" class="head-img"/>
+                    <a href="javascript:;" class="file">
                         <input type="file" name="userHeadPortrait" class="change-img"/>
                         <span class="chang-text">更换头像</span>
                     </a>
@@ -146,4 +110,6 @@ body{ background:#F7F7F7 !important}
         </form>
     </div>
 </body>
+
+</head>
 </html>

@@ -6,7 +6,6 @@ import com.callRing.self.po.User;
 import com.callRing.self.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by kcz on 2016/11/14.
@@ -40,6 +39,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public void registerUser(User user) throws Exception {
+		user.setUserHeadPortraitPath("default.jpg");
 		userMapper.registerUser(user);
 
 	}

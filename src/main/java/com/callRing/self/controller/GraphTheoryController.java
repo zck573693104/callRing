@@ -4,8 +4,6 @@ import com.callRing.self.po.GraphTheory;
 import com.callRing.self.po.LogDay;
 import com.callRing.self.service.GraphTheoryService;
 import com.callRing.self.service.LogDayService;
-import com.callRing.self.service.serviceImpl.GraphTheoryServiceImpl;
-import com.callRing.self.service.serviceImpl.LogDayServiceImpl;
 import com.callRing.util.UploadFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +32,8 @@ public class GraphTheoryController {
     private GraphTheoryService graphTheoryService;
 
     @RequestMapping("/insertPicPath")
-    public String insertPicPath(HttpSession session,@RequestParam MultipartFile[] graphTheories,String graphTheoryContent, HttpServletRequest request) throws Exception {
+    @ResponseBody
+    public void insertPicPath(HttpSession session,@RequestParam MultipartFile[] graphTheories,String graphTheoryContent, HttpServletRequest request) throws Exception {
             List<String>newFileNames= UploadFileUtils.uploadFileList(graphTheories, request);
             if (newFileNames.size()!=0){
                 List<GraphTheory>graphTheoryList=new ArrayList<>();
@@ -53,7 +52,7 @@ public class GraphTheoryController {
             logDay.setLogDayContext(graphTheoryContent);
             logDayService.addLogDay(logDay);
         }
-        return "success";
+
     }
 
     @RequestMapping("/queryGraphs")

@@ -132,15 +132,8 @@
 
 <!-- Header -->
 <header id="header">
-    <c:choose>
-        <c:when test="${userHeadPortraitPath==null}">
-            <a href="<%=basePath%>upload/callRing/default.jpg"  class="image avatar"><img src="<%=basePath%>upload/callRing/default.jpg" id="head" alt=""/></a>
-        </c:when>
-        <c:when test="${userHeadPortraitPath!=null}">
-            <a href="<%=basePath%>upload/callRing/${userHeadPortraitPath}"  class="image avatar"><img src="<%=basePath%>upload/callRing/${userHeadPortraitPath}" id="head" alt=""/></a>
-        </c:when>
-    </c:choose>
-        <%--<form action="" method="post" enctype="multipart/form-data" id="updatePicPathForm">
+    <a href="<%=basePath%>upload/callRing/${userHeadPortraitPath}"  class="image avatar"><img src="<%=basePath%>upload/callRing/${userHeadPortraitPath}" id="head" alt=""/></a>
+    <%--<form action="" method="post" enctype="multipart/form-data" id="updatePicPathForm">
           <a   href="javascript: void(0);" class="btn_addPic" ><span><EM>+</EM>修改头像</span>
           <input  class="filePrew"  tabIndex="3" type="file" size="3" name="userHeadPortrait" id="updatePicPath"/>
            </a>

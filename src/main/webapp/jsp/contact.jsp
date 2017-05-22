@@ -10,14 +10,13 @@
 <html>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=750,target-densitydpi=340,user-scalable=no">
 <title>主页</title>
 <link rel="stylesheet" type="text/css" href="../css/poppup.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/swiper.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/uploadFile.css" />
 <link rel="stylesheet" type="text/css" href="../js/layer/skin/default/layer.css"/>
-<script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
+<script src="../jquery/jquery-1.6.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/swiper.js"></script>
 <script src="../js/layer/mobile/layer.js"></script>
 <style>
@@ -276,40 +275,8 @@
 
     });
 </script>
-<body id="body_bg">
-<!-- dialog-->
-<div class="chat-dialog undis" id="chat-dialog">
-    <div class="drop-wrap">
-        <!--自己-->
-        <ul class="self">
-            <li class="clearfix">
-                <img src="./1.jpg" class="head-img pull-right" />
-                <div class="chat-text pull-right mr-10 bg-ff">你好</div>
+<body>
 
-            </li>
-
-            <li class="clearfix">
-                <img src="./2.jpg" class="head-img pull-left" />
-                <div class="chat-text pull-left ml-10 bg-green">你好</div>
-            </li>
-            <li class="clearfix">
-                <img src="./1.jpg" class="head-img pull-right" />
-                <div class="chat-text pull-right mr-10 bg-ff">你好</div>
-
-            </li
-        </ul>
-        <!--好友-->
-        <ul class="other">
-
-        </ul>
-    </div>
-
-    <div class="dt-btns">
-        <input type="text" id="msg" />
-        <a href="javascript:;" class="btn-md btn-gray btn-submit" btn-submit onclick="sendMsg()">发送</a>
-        <a href="javascript:;" class="btn-md btn-gray btn-close" btn-close>关闭</a>
-    </div>
-</div>
 
 <div class="homepage">
     <c:choose>
@@ -615,6 +582,7 @@
     </ul>
 </div>
 <script src="${pageContext.request.contextPath}/js/simpler-sidebar.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/simpler-sidebar.js"></script>
 <script>
     $(".group_tit").click(function(){
         $(this).parent().toggleClass("cheg");
@@ -670,42 +638,7 @@
     }
 </script>
 
-<script type="text/javascript" src="../js/jquery.dlog.js"></script>
-<script type="text/javascript">
-    (function(){
-        $(document).on('click','[chat-dlog]',function(){
-            $('#chat-dialog').dlog({
-                title:'小花',
-                width:440,
-                height:480
-            });
-            return false;
-        });
-        $('[btn-close]').on('click',function(){
-            $('#chat-dialog')._dlogclose();
-            return false;
-        });
-    })();
 
-    function sendMsg(){
-        var v=$("#msg").val();
-        if(v==""){
-            return;
-        }else{
-            var data={};
-            data["userName"]=userName;
-            data["friendName"]=friendName;
-            data["text"]=v;
-            websocket.send(JSON.stringify(data));
 
-            $("#content").append( "<ul class='self'>"+
-                "<li class='clearfix'>"+
-                "<img src='./1.jpg' class='head-img pull-right' />"+
-                "<div class='chat-text pull-right mr-10 bg-ff'>你好</div>"+"</li>"+" </ul>");
-            scrollToBottom();
-            $("#msg").val("");
-        }
-    }
-</script>
 </body>
 </html>

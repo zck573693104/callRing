@@ -2,10 +2,10 @@ package com.callRing.self.controller;
 
 import com.callRing.self.po.ContactWay;
 import com.callRing.self.service.ContactWayService;
-import com.callRing.self.service.serviceImpl.ContactWayServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,9 +20,10 @@ public class ContactWayController {
     private ContactWayService contactWayService;
 
     @RequestMapping("/insertContactWay")
-    public String insertContactWay(HttpSession session,ContactWay contactWay) throws Exception {
+    @ResponseBody
+    public void insertContactWay(HttpSession session,ContactWay contactWay) throws Exception {
         contactWay.setUserName((String)session.getAttribute("userName"));
         contactWayService.insertContactWay(contactWay);
-        return "success";
+
     }
 }

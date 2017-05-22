@@ -5,7 +5,6 @@ import com.callRing.self.po.GraphTheory;
 import com.callRing.self.po.User;
 import com.callRing.self.service.GraphTheoryService;
 import com.callRing.self.service.UserService;
-import com.callRing.self.service.serviceImpl.GraphTheoryServiceImpl;
 import com.callRing.util.UploadFileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +92,8 @@ public class UserController {
 	 * 自我介绍只允许一条 判断introduce表是否有用户名 如果没有则insert否则update
 	 */
 	@RequestMapping("/updateUserInfo")
-	public String updateUserInfo(String userIntroduce,HttpSession session, MultipartFile userHeadPortrait, HttpServletRequest request)throws Exception{
+	@ResponseBody
+	public void updateUserInfo(String userIntroduce,HttpSession session, MultipartFile userHeadPortrait, HttpServletRequest request)throws Exception{
 		String newFileNames= UploadFileUtils.uploadFile(userHeadPortrait, request);
 		User user=new User();
 		user.setUserIntroduce(userIntroduce);
@@ -105,6 +105,6 @@ public class UserController {
 		if (!StringUtils.isBlank(user.getUserHeadPortraitPath())){
 			session.setAttribute("userHeadPortraitPath", user.getUserHeadPortraitPath());
 		}
-		return "success";
+
 	}
 }

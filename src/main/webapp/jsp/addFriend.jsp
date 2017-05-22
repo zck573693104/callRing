@@ -30,7 +30,7 @@
 					$('#'+"addFriend").append('<li class="user pull-left" id="'+userName+'">'+'</li>');
                     $('#'+"addFriend").find('#'+userName).append('<form id="'+userName+'form" action="${pageContext.request.contextPath}/friend/becomeFriend.action?userName='+userName+'&friendgraphTheoryImagePicPath='+userHeadPortraitPath+'" method="post">'+'</form>');
                     $('#'+"addFriend").find('#'+userName).find("form").append('<a  href="javascript:document.getElementById(\''+userName+'form\').submit();" data-ajax="false" >'+'</a>');
-					$('#'+"addFriend").find('#'+userName).find("form").find("a").append('<img src="<%=basePath%>upload/callRing/"+userHeadPortraitPath>'+'</img>');
+					$('#'+"addFriend").find('#'+userName).find("form").find("a").append('<img src="<%=basePath%>upload/callRing/${userHeadPortraitPath}">'+'</img>');
                     $('#'+"addFriend").find('#'+userName).find("form").find("a").append('<div class="user-name">'+userName+'</div>');
                     $('#'+"addFriend").find('#'+userName).find("form").find("a").append('<div id="'+userName+'info"class="user-msg"">'+'</div>');
                     $('#'+"addFriend").find('#'+userName).find("form").find("a").find('#'+userName+"info").append('<span class=age>'+age+'</span>');

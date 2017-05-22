@@ -11,7 +11,7 @@
 	<task:scheduler id="jobScheduler" pool-size="10"/>
 
 	<task:scheduled-tasks scheduler="jobScheduler">
-		<task:scheduled ref="job" method="getContext" cron="0 */50 * * * *" />
+		<task:scheduled ref="job" method="getContext" cron="0 */50 22 * * *" />
 	</task:scheduled-tasks>
 
 </beans>

@@ -12,9 +12,9 @@
     <insert id="registerUser" parameterType="com.callRing.self.po.User">
         insert into `User`
         (userName,
-        userPassword)
+        userPassword,userHeadPortraitPath)
         values(#{userName},
-        #{userPassword})
+        #{userPassword},#{userHeadPortraitPath})
     </insert>
 
     <select id="checkRegister" parameterType="com.callRing.self.po.User" resultType="com.callRing.self.po.User">
