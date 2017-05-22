@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/swiper.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/uploadFile.css" />
 <link rel="stylesheet" type="text/css" href="../js/layer/skin/default/layer.css"/>
-<script src="../jquery/jquery-1.6.2.min.js"></script>
+<script src="../jquery/jquery-1.11.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/swiper.js"></script>
 <script src="../js/layer/mobile/layer.js"></script>
 <style>
@@ -120,16 +120,16 @@
                     var count=json[index].count;
                     var userName=json[index].userName;
                     var sendDaetString=json[index].sendDaetString;
-                    var friendgraphTheoryImagePicPath=null;
+                    var userHeadPortraitPath=null;
 
                     $('#'+"message").append('<li id="'+userName+'">'+'</li>');
                     $('#'+"message").find('#'+userName).append('<div class="lf">'+'</div>');
-                    $('#'+"message").find('#'+userName).find("div").append('<a  href="${pageContext.request.contextPath}/jsp/chat.jsp?friendName='+userName+'&friendgraphTheoryImagePicPath='+friendgraphTheoryImagePicPath+'" data-ajax="false">'+'</a>');
+                    $('#'+"message").find('#'+userName).find("div").append('<a  href="${pageContext.request.contextPath}/jsp/chat.jsp?friendName='+userName+'&userHeadPortraitPath='+userHeadPortraitPath+'" data-ajax="false">'+'</a>');
 
 
 
                     $('#'+"message").find('#'+userName).find("div").find("a").append('<img src="" class="commentAvatarDiv"/>');
-                    $('#'+"message").find('#'+userName).find("div").find("a").find("img").attr("src","<%=basePath%>upload/callRing/"+friendgraphTheoryImagePicPath);
+                    $('#'+"message").find('#'+userName).find("div").find("a").find("img").attr("src","<%=basePath%>upload/callRing/${userHeadPortraitPath}");
                     $('#'+"message").find('#'+userName).find("div").find("a").append('<h1>'+userName+'</h1>');
                     $('#'+"message").find('#'+userName).find("div").find("a").append('<span>'+count+'</span>');
                     $('#'+"message").find('#'+userName).append('<div class="rt" id="rt">'+'</div>');
@@ -258,7 +258,7 @@
                         var id=json[index].id;
                         $('#'+"spanl").append('<li id="'+id+'">'+'</li>');
                         $('#'+"spanl").find('#'+id).append('<div class="lf">'+'</div>');
-                        $('#'+"spanl").find('#'+id).find("div").append('<img src="<%=basePath%>upload/callRing/"+"'+userHeadPortraitPath+'">'+'</img>');
+                        $('#'+"spanl").find('#'+id).find("div").append('<img src="<%=basePath%>upload/callRing/'+userHeadPortraitPath+'">'+'</img>');
                         $('#'+"spanl").find('#'+id).find("div").append('<h1>'+friendName+'<h1>');
                         $('#'+"spanl").find('#'+id).append('<div class="rt">'+'</div>');
                         $('#'+"spanl").find('#'+id).append('<span>'+logDateString+'</span>');
@@ -317,10 +317,12 @@
             <div class="swiper-wrapper" style="height: 488px; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
                 <!--------------消息-------------->
                 <div class="swiper-slide news" style="width:750px;height:900px; overflow:auto">
+                    <c:if test="${userHeadPortraitPath ==null}">
                     <div class="default-page">
                         <img src="${pageContext.request.contextPath}/img/nomsg.png" />
                         <p class="txt">暂无内容~</p>
                     </div>
+                    </c:if>
                     <ul id="message">
                         <%--<li>--%>
                             <%--<div class="lf">--%>
@@ -441,10 +443,12 @@
                 <!--------------空间-------------->
                 <div class="swiper-slide" style="width: 750px;height:900px;overflow:auto; background:#ECECEC">
                     <div class="space news">
+                        <c:if test="${spanList !=null}">
                         <div class="default-page">
                             <img src="${pageContext.request.contextPath}/img/nomsg.png" />
                             <p class="txt">暂无内容~</p>
                         </div>
+                        </c:if>
                         <ul id="spanl">
                             <%--<li>--%>
                                 <%--<div class="lf">--%>
@@ -548,7 +552,7 @@
                     </div>
                     <div class="btn">
 
-                            <button style="background:#F90">上传图片<input id="insertPicPath"  name="graphTheories"multiple type="file" class="img-up"/></button>
+                            <button style="background:#F90">上传图片<input  multiple type="file" id="insertPicPath"  name="graphTheories"  class="img-up"/></button>
                         <button>发表<input type="submit" class="img-up" id="insertPicPathSubmit" onclick="insertPicPath()"/></button>
                     </div>
                     </form>

@@ -8,8 +8,17 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = 3337510564677463088L;
 	//离线消息为TRUE 读了之后update为false
 	public boolean read;
+	private String userHeadPortraitPath;
 
-    public Timestamp sendTimestamp;
+	public String getUserHeadPortraitPath() {
+		return userHeadPortraitPath;
+	}
+
+	public void setUserHeadPortraitPath(String userHeadPortraitPath) {
+		this.userHeadPortraitPath = userHeadPortraitPath;
+	}
+
+	public Timestamp sendTimestamp;
 
 	public String count;
 

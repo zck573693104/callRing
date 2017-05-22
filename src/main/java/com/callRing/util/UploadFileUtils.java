@@ -1,6 +1,6 @@
 package com.callRing.util;
 
-import com.callRing.exception.CustomException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,13 +63,16 @@ public class UploadFileUtils {
 	 */
 	public static List<String> uploadFileList(MultipartFile multipartFiles[], HttpServletRequest request)
 			throws Exception {
-		List<String> newFileNames = new ArrayList<>();
+		List<String> newFileNameList = new ArrayList<>();
 
 		for (MultipartFile multipartFile : multipartFiles) {
+			String newFileNme = getFileString(multipartFile, request);
+			if (! StringUtils.isBlank(newFileNme)){
 
-			newFileNames.add(getFileString(multipartFile, request));
+				newFileNameList.add(newFileNme);
+			}
 		}
 
-		return newFileNames;
+		return newFileNameList;
 	}
 }

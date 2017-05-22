@@ -15,7 +15,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script src="<%=basePath%>jquery/jquery-1.6.2.min.js"></script>
+    <script src="../jquery/jquery-1.6.2.min.js"></script>
     <style>
         textarea {
             height: 300px;
@@ -186,7 +186,7 @@
             var data=JSON.parse(event.data);
             console.log("WebSocket:收到一条消息",data);
             var textCss=data.from==-1?"sfmsg_text":"fmsg_text";
-            $("#content").append("<div class='fmsg'><label class='name'>"+data.userName+"&nbsp;"+data.date+"</label><div class='"+textCss+"'>"+data.text+"</div></div>");
+            $("#content").append("<div class='fmsg'><label class='name'>"+data.friendName+"&nbsp;"+data.sendDaetString+"</label><div class='"+textCss+"'>"+data.text+"</div></div>");
             scrollToBottom();
         };
         websocket.onerror = function(event) {

@@ -37,8 +37,9 @@
     </delete>
 
     <select id="countMessageList" parameterType="com.callRing.friend.po.Message" resultType="com.callRing.friend.po.Message">
-      select *,count(text) AS `count`
-      from message
+      select m.*,u.userHeadPortraitPath,count(text) AS `count`
+      from message m
+      left join `user` u ON u.username=m.username
       where friendname=#{userName}
       AND `read`=TRUE
       group by username
