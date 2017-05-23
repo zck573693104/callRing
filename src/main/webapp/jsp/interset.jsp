@@ -63,52 +63,52 @@
 <div class="about-sec" >
 	<div class="container" >
    <div class="row text-center">
-	   <c:forEach  varStatus="status" items="${sessionScope.hotWordList} ">
+	   <c:forEach  varStatus="status" items="${hotWordList} ">
 	   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-b-r pad-o" >
 		  <i class="fa fa-ticket fa-5x" ></i>
-		   <h3 >${sessionScope.hotWordList}</h3>
+		   <h3 >${hotWordList[status.index]}</h3>
 		   <p>
-			   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+			   <%--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.--%>
 		   </p>
 	   </div>
 	   </c:forEach>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-b-r pad-o" >
-		  <i class="fa fa-location-arrow fa-5x" ></i>
-		   <h3 >LIGHT WEIGHT</h3>
-		   <p>
-			   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-		   </p>
-	   </div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-b pad-o" >
-		  <i class="fa fa-lightbulb-o fa-5x" ></i>
-		   <h3 >HAND CRAFTED</h3>
-		   <p>
-			   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-		   </p>
-	   </div>
-   </div>
-		<div class="row text-center">
-	   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-r pad-o" >
-		  <i class="fa fa-circle-o-notch fa-5x" ></i>
-		   <h3 > RESPONSIVE</h3>
-		   <p>
-			   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-		   </p>
-	   </div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-r pad-o" >
-		  <i class="fa fa-code fa-5x" ></i>
-		   <h3 >EASY CODING</h3>
-		   <p>
-			   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-		   </p>
-	   </div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pad-o" >
-		  <i class="fa fa-slack fa-5x" ></i>
-		   <h3 >UNIQUE DESIGN</h3>
-		   <p>
-			   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-		   </p>
-	   </div>
+		<%--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-b-r pad-o" >--%>
+		  <%--<i class="fa fa-location-arrow fa-5x" ></i>--%>
+		   <%--<h3 >LIGHT WEIGHT</h3>--%>
+		   <%--<p>--%>
+			   <%--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.--%>
+		   <%--</p>--%>
+	   <%--</div>--%>
+		<%--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-b pad-o" >--%>
+		  <%--<i class="fa fa-lightbulb-o fa-5x" ></i>--%>
+		   <%--<h3 >HAND CRAFTED</h3>--%>
+		   <%--<p>--%>
+			   <%--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.--%>
+		   <%--</p>--%>
+	   <%--</div>--%>
+   <%--</div>--%>
+		<%--<div class="row text-center">--%>
+	   <%--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-r pad-o" >--%>
+		  <%--<i class="fa fa-circle-o-notch fa-5x" ></i>--%>
+		   <%--<h3 > RESPONSIVE</h3>--%>
+		   <%--<p>--%>
+			   <%--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.--%>
+		   <%--</p>--%>
+	   <%--</div>--%>
+		<%--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 bdr-r pad-o" >--%>
+		  <%--<i class="fa fa-code fa-5x" ></i>--%>
+		   <%--<h3 >EASY CODING</h3>--%>
+		   <%--<p>--%>
+			   <%--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.--%>
+		   <%--</p>--%>
+	   <%--</div>--%>
+		<%--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pad-o" >--%>
+		  <%--<i class="fa fa-slack fa-5x" ></i>--%>
+		   <%--<h3 >UNIQUE DESIGN</h3>--%>
+		   <%--<p>--%>
+			   <%--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.--%>
+		   <%--</p>--%>
+	   <%--</div>--%>
    </div>
 </div>
 </div>

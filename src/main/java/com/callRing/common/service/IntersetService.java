@@ -2,6 +2,7 @@ package com.callRing.common.service;
 
 import com.callRing.common.po.Interset;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -13,5 +14,5 @@ public interface IntersetService {
 
     void batchSave(List<Interset> intersetList);
 
-    List<String>getHotWord(String name);
+    List<String>getHotWord(String name) throws ParseException;
 }

@@ -63,7 +63,7 @@
     </foreach>
   </insert>
 
-  <select id="getHotWord" parameterType="string" resultType="java.lang.String">
-    SELECT hot_Word FROM interset WHERE `name` LIKE CONCAT(CONCAT('%', #{name}), '%')
+  <select id="getHotWord"  resultType="java.lang.String">
+    SELECT hot_Word FROM interset WHERE fir_Time=#{firTime} and `name` LIKE CONCAT(CONCAT('%', #{name}), '%')
   </select>
 </mapper>

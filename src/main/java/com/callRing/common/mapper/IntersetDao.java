@@ -1,7 +1,9 @@
 package com.callRing.common.mapper;
 
 import com.callRing.common.po.Interset;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IntersetDao {
@@ -11,5 +13,5 @@ public interface IntersetDao {
 
     void batchSave(List<Interset> intersetList);
 
-    List<String>getHotWord(String name);
+    List<String>getHotWord(@Param("firTime")Date firTime,@Param("name")String name);
 }
