@@ -19,7 +19,7 @@ public class LogAspect {
     private static final String LOG_SESSION_END = "%1$s, %2$s end.";
     private static final String LOG_SESSION_START = "%1$s, %2$s begin.";
     private static final String METHOD_ID_WITHOUT_NAME = "%s.%s";
-    private static final String POINTCUT_PUBLIC_SERVICE = "inLwService() && serviceBean() && anyPublicMethod()";
+    private static final String POINTCUT_PUBLIC_SERVICE = "inService() && serviceBean() && anyPublicMethod()";
     private static final String POINTCUT_PUBLIC_CONTROLLER = "anyPublicMethod() && inController() && controllerBean()";
     private static Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
@@ -27,13 +27,13 @@ public class LogAspect {
     }
 
 
-    // @Pointcut("execution(* com.lwiot.data.service.AppData.TestService.readySend(..)) || execution(* com.lwiot.data.service.AppData.ShowDetailsService.readySend(..)) || execution(* com.lwiot.data.service.AppData.AppDataService.pushMessage(..))")
+    // @Pointcut("execution(* com.iot.data.service.AppData.TestService.readySend(..)) || execution(* com.iot.data.service.AppData.ShowDetailsService.readySend(..)) || execution(* com.iot.data.service.AppData.AppDataService.pushMessage(..))")
     @Pointcut("execution(public * *(..))")
     public void anyPublicMethod() {
     }
 
-    @Pointcut("within(com..*) || within(com..*) || within(com..*) || within(com.framework..*) || within(com.compnent..*)")
-    public void inLwService() {
+    @Pointcut("within(com..*) || within(com..*) || within(com..*)  ")
+    public void inService() {
     }
 
     @Pointcut("bean(*Service) || bean(*ServiceImpl) ||bean(ConsumerService) ")
@@ -65,7 +65,7 @@ public class LogAspect {
         return var5;
     }
 
-    @Around("inLwService() && serviceBean() && anyPublicMethod()")
+    @Around(" serviceBean() && anyPublicMethod()")
     public Object doServiceLog(ProceedingJoinPoint proceed) throws Throwable {
         long start = System.nanoTime();
         boolean var11 = false;
@@ -127,6 +127,6 @@ public class LogAspect {
     }
 
     private boolean isValidateException(Exception ex) {
-        return ex != null && FieldUtils.getField(ex.getClass(), "isLwValidateException", true) != null;
+        return ex != null && FieldUtils.getField(ex.getClass(), "isValidateException", true) != null;
     }
 }
